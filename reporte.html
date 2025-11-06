@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&B Teatro - Reporte de Ventas</title>
+    <link rel="stylesheet" href="reporte.css">
+</head>
+<body>
+
+    <header class="header-reporte">
+        <h1>📊 Resumen de Ventas por Alumno</h1>
+        <p>Meta mínima por alumno: 30 boletos (Para tarifa especial de $400).</p>
+        <button onclick="window.close()">Volver a la Venta</button>
+    </header>
+
+    <main id="dashboard-container">
+        <h2 id="loading-message">Cargando datos...</h2>
+    </main>
+    
+    <div id="detalle-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="document.getElementById('detalle-modal').style.display='none'">&times;</span>
+            <h2 id="modal-alumno-nombre"></h2>
+            <h3>Boletos Vendidos Detalle:</h3>
+            <ul id="boletos-detalle-lista">
+                </ul>
+        </div>
+    </div>
+
+    <script src="reporte.js"></script>
+</body>
+</html>

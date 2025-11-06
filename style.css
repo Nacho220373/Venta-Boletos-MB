@@ -1,0 +1,377 @@
+/* Importar una fuente limpia y moderna (Roboto) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* Colores Base: Negro (#000), Blanco (#FFF), Acero (#C0C0C0) */
+:root {
+    --color-principal: #000;
+    --color-texto: #FFF;
+    --color-fondo-secundario: #1A1A1A; /* Negro más suave para las secciones */
+    --color-interactivo: #FFF; /* Blanco como color de acento/interacción */
+    --color-bloqueado: #333;
+    --color-disponible: #444;
+}
+
+/* --- Estilos Generales --- */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--color-principal);
+    color: var(--color-texto);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: var(--color-fondo-secundario);
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--color-interactivo);
+    /* Usa espacio entre los elementos para separar el botón */
+    justify-content: space-between; 
+}
+
+.logo {
+    height: 45px;
+    margin-right: 25px;
+    flex-shrink: 0; 
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); 
+}
+
+.header-info {
+    flex-grow: 1; 
+    margin-right: 20px;
+}
+
+.header-info h1 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.selector-funcion label, .selector-funcion select {
+    font-size: 0.9em;
+    font-weight: 400;
+    color: #C0C0C0; 
+}
+
+/* Estilo para el selector de función */
+.selector-funcion select {
+    background-color: var(--color-fondo-secundario);
+    color: var(--color-texto);
+    border: 1px solid #777;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+/* --- Estilos para el nuevo botón de menú/reporte --- */
+.btn-menu {
+    padding: 10px 15px;
+    background-color: #333;
+    color: var(--color-interactivo); 
+    border: 1px solid #777;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 700;
+    transition: background-color 0.2s;
+}
+
+.btn-menu:hover {
+    background-color: #555;
+    color: var(--color-interactivo);
+}
+
+.resumen-alumno h3 {
+    margin-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #444;
+}
+
+#boletos-acumulados {
+    color: var(--color-interactivo);
+    font-weight: 700;
+}
+
+/* --- Contenedor Principal --- */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* --- Secciones --- */
+.seccion-visual, .seccion-formulario {
+    background-color: var(--color-fondo-secundario);
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.seccion-visual {
+    flex: 2;
+    min-width: 500px;
+}
+
+.seccion-formulario {
+    flex: 1;
+    min-width: 300px;
+}
+
+h2 {
+    color: var(--color-interactivo);
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
+    margin-top: 0;
+    font-weight: 700;
+}
+
+h3 {
+    font-weight: 400;
+    color: #AAA;
+}
+
+/* --- Mapa de Referencia y Esquema Simplificado --- */
+.mapa-img-referencia {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #333;
+    display: block;
+    margin-bottom: 20px;
+}
+
+#escenario {
+    background-color: #C0C0C0; 
+    color: var(--color-principal);
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.mesas-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 10px;
+}
+
+.mesa {
+    background-color: #333;
+    /* CORRECCIÓN: Aumentar padding superior para la etiqueta */
+    padding: 15px 10px 10px 10px; 
+    border-radius: 8px;
+    text-align: center;
+    width: 100px;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+    position: relative;
+    transition: all 0.2s;
+}
+
+.mesa:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.etiqueta-mesa {
+    position: absolute;
+    top: 2px; /* CORRECCIÓN: Baja la etiqueta dentro del padding */
+    left: 50%;
+    transform: translateX(-50%); /* Centrar la etiqueta */
+    font-size: 0.8em;
+    font-weight: 700;
+    color: #C0C0C0;
+}
+
+.asientos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.asiento {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    background-color: var(--color-disponible);
+    color: var(--color-texto);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s, transform 0.1s;
+    border: 1px solid #666;
+}
+
+.asiento:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+/* Estados del Asiento */
+.asiento.seleccionado {
+    background-color: var(--color-interactivo); 
+    color: var(--color-principal);
+    border: 2px solid var(--color-interactivo);
+    font-weight: bold;
+}
+
+.asiento.bloqueado {
+    background-color: var(--color-bloqueado);
+    cursor: not-allowed;
+    opacity: 0.5;
+    border: 1px dashed #333;
+    color: #999;
+}
+
+/* Mesa Accesible (Mesa 13) */
+.mesa.accesible {
+    padding-bottom: 35px; 
+    border: 2px solid #C0C0C0; 
+}
+
+.mesa.accesible .icono-discapacidad {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.6em;
+    color: #C0C0C0;
+    line-height: 1;
+}
+
+/* --- Formulario de Venta --- */
+#formulario-venta label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+#formulario-venta input[type="text"],
+#formulario-venta input[type="number"],
+#formulario-venta select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #2A2A2A;
+    color: var(--color-texto);
+    font-size: 1em;
+}
+
+/* --- Estilos para Botones de Precio --- */
+.control-precios {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.btn-precio {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #777;
+    border-radius: 4px;
+    background-color: #2A2A2A;
+    color: #C0C0C0;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-precio:hover {
+    background-color: #383838;
+}
+
+.btn-precio.seleccionado {
+    background-color: var(--color-interactivo); /* Blanco */
+    color: var(--color-principal); /* Negro */
+    border-color: var(--color-interactivo);
+}
+
+/* Estilo para el botón de Nuevo Alumno */
+#btn-toggle-nuevo-alumno {
+    border: 1px dashed #777 !important; /* Estilo para destacar */
+}
+#btn-toggle-nuevo-alumno:hover {
+    background-color: #383838;
+    color: var(--color-interactivo);
+}
+
+
+#monto-total, #precio-unitario-select {
+    font-weight: 700;
+    color: var(--color-interactivo) !important;
+    border: 1px solid var(--color-interactivo);
+}
+
+#btn-vender {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-interactivo);
+    color: var(--color-principal);
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: background-color 0.2s;
+}
+
+#btn-vender:hover:not(:disabled) {
+    background-color: #DEDEDE;
+}
+
+#btn-vender:disabled {
+    background-color: #444;
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* --- Resumen --- */
+#lista-asientos-seleccionados {
+    list-style: disc;
+    padding-left: 20px;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* --- Reusar estilos de modal de reporte para el custom confirm --- */
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--color-fondo-secundario);
+    margin: 15% auto; /* Centrar un poco más */
+    padding: 30px;
+    border: 1px solid #444;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    position: relative;
+}

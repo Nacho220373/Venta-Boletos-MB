@@ -1,0 +1,32 @@
+{
+  "name": "venta-boletos-roa",
+  "version": "1.0.0",
+  "description": "Sistema de Venta y Control de Boletos para Rock of Ages - M&B Teatro",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:mac": "electron-builder --mac" 
+  },
+  "keywords": [
+    "electron",
+    "excel",
+    "ventas"
+  ],
+  "author": "Tu Nombre",
+  "license": "ISC",
+  "dependencies": {
+    
+  },
+  "devDependencies": {
+    "electron": "^28.2.0",
+    "electron-builder": "^24.9.1",
+    "xlsx": "^0.18.5"
+  },
+  "build": {
+    "appId": "com.mbteatro.ventaroa",
+    "mac": {
+      "target": "dmg",
+      "icon": "logo.png"
+    }
+  }
+}
