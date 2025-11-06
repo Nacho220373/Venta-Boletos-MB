@@ -1,5 +1,5 @@
 # .github/workflows/build.yml
-# Corregido: Asegura el disparador 'push' para la rama 'main'
+# Esta configuración permite que Electron Builder use el GH_TOKEN para publicar el artifact.
 
 name: Build Electron App
 
@@ -17,22 +17,25 @@ jobs:
     steps:
       - name: Checkout Código Fuente
         uses: actions/checkout@v4
-
+        
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20 # Asegúrate de que esta versión sea compatible con Electron 28
+          node-version: 20 # Versión de Node.js
 
       - name: Instalar Dependencias
         run: npm install
 
       - name: Ejecutar Build para macOS
-        # Este es el script que tú definiste en package.json
+        # FIX: Inyectamos el GH_TOKEN como variable de entorno
+        env: 
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npm run build:mac
-
+        
       - name: Subir Artifact (DMG o APP)
         uses: actions/upload-artifact@v4
         with:
-          # El archivo generado se encuentra en la carpeta 'dist'
-          name: VentaBoletosROA-macOS
+          # El nombre del archivo final para descargar
+          name: VentaBoletosROA-macOS-DMG
+          # La ruta donde electron-builder deja el archivo
           path: dist/*.dmg
