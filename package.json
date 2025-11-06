@@ -28,7 +28,7 @@
     "mac": {
       "target": "dmg",
       "icon": "logo.png",
-      "unSign": true 
+      "sign": false 
     }
   }
 }
