@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build:mac": "electron-builder --mac" 
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win"
   },
   "keywords": [
     "electron",
@@ -26,7 +27,8 @@
     "appId": "com.mbteatro.ventaroa",
     "mac": {
       "target": "dmg",
-      "icon": "logo.png"
+      "icon": "logo.png",
+      "unSign": true 
     }
   }
 }
