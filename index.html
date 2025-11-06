@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M&B Teatro - Venta de Boletos ROA</title>
     <link rel="stylesheet" href="style.css">
+    <script src="./libs/xlsx.full.min.js"></script> 
     <script src="preload.js"></script> 
 </head>
 <body>
@@ -23,10 +24,19 @@
                     <option value="F5">F5: 22 Noviembre 13:00</option>
                     <option value="F6">F6: 22 Noviembre 18:00</option>
                 </select>
+                <div id="grafica-funcion" class="progreso-pequeno" title="Llenado de la Función">
+                    <span class="progreso-porcentaje">0%</span>
+                </div>
             </div>
         </div>
-        <button type="button" id="btn-asignacion" class="btn-menu" style="margin-right: 10px; background-color: #555;">📍 Asignar Lugares Base</button>
+        
+        <div id="grafica-temporada" class="progreso-pequeno" style="margin-right: 15px;" title="Progreso Total de Temporada">
+            <span class="progreso-porcentaje">0%</span>
+        </div>
+
+        <button type="button" id="btn-asignacion" class="btn-menu" style="margin-right: 10px; background-color: #555;">📍 Asignar Boletos No Asignados</button>
         <button type="button" id="btn-reporte" class="btn-menu">📊 Reporte</button> 
+        <button type="button" id="btn-descargar-funcion" class="btn-menu" style="margin-left: 10px; background-color: #008000;">📥 Descargar Lista</button>
     </header>
 
     <main class="container">
@@ -85,6 +95,13 @@
 
                 <label>Monto Total:</label>
                 <input type="text" id="monto-total" value="$0.00" readonly>
+
+                <div id="personalizar-boletos-control" style="margin-top: 15px;">
+                    <label>Personalizar Boletos (Nombre del Dueño):</label>
+                    <button type="button" id="btn-toggle-personalizar" style="width: 100%; padding: 8px; border: 1px dashed #777; border-radius: 4px; background-color: #2A2A2A; color: #C0C0C0; cursor: pointer;">✏️ Asignar Nombres</button>
+                    <div id="campos-personalizacion" style="display:none; margin-top: 10px;">
+                        </div>
+                </div>
 
                 <label for="forma-pago">Forma de Pago:</label>
                 <select id="forma-pago" required>
@@ -153,7 +170,39 @@
             </div>
         </div>
     </div>
-    
+
+    <div id="auth-modal" class="modal" style="z-index: 300;">
+        <div class="modal-content" style="max-width: 400px; text-align: center;">
+            <h2 id="auth-title" style="border-bottom: none; margin-bottom: 5px;">Acceso de Administración</h2>
+            <p style="color: #C0C0C0; font-size: 1.0em; margin-bottom: 15px;">Ingresa la contraseña para desbloquear operaciones sensibles.</p>
+            
+            <input type="password" id="auth-password-input" placeholder="Contraseña" style="width: 80%; margin-bottom: 10px;">
+            
+            <div style="display: flex; justify-content: space-around; margin-bottom: 10px;">
+                <button id="auth-ok" class="btn-menu" style="background-color: #008000; color: white; border: none;">Desbloquear</button>
+                <button id="auth-cancel" class="btn-menu" style="background-color: #708090; color: white; border: none;">Cancelar</button>
+            </div>
+            
+            <button type="button" id="btn-toggle-cambiar-pass" style="font-size: 0.8em; color: #C0C0C0; background: none; border: none; cursor: pointer;">Cambiar Contraseña</button>
+            
+            <div id="cambiar-pass-control" style="display:none; margin-top: 10px; border-top: 1px solid #444; padding-top: 10px;">
+                <input type="password" id="current-password-input" placeholder="Contraseña Actual" style="width: 80%; margin-bottom: 5px;">
+                <input type="password" id="new-password-input" placeholder="Nueva Contraseña" style="width: 80%; margin-bottom: 5px;">
+                <button id="btn-guardar-pass" class="btn-menu" style="background-color: #FFA500; color: #000; border: none;">Guardar Nueva Contraseña</button>
+                <p id="pass-msg" style="color: #C0C0C0; font-size: 0.8em; margin-top: 5px;"></p>
+            </div>
+        </div>
+    </div>
+    <div id="detalle-modal" class="modal" style="z-index: 250;">
+        <div class="modal-content" style="max-width: 700px; position: relative;">
+            <span class="close-button" onclick="document.getElementById('detalle-modal').style.display='none'">&times;</span>
+            <h2 id="modal-alumno-nombre"></h2>
+            <h3>Boletos Registrados:</h3>
+            <ul id="boletos-detalle-lista">
+                </ul>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

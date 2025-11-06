@@ -28,6 +28,36 @@
         </div>
     </div>
 
+    <div id="transfer-modal" class="modal" style="z-index: 300;">
+        <div class="modal-content" style="max-width: 450px;">
+            <span class="close-button" onclick="document.getElementById('transfer-modal').style.display='none'">&times;</span>
+            <h2>Transferir Boleto Seleccionado</h2>
+            <p id="transfer-info" style="color: #C0C0C0;">Transfiriendo boleto...</p>
+            
+            <label for="alumno-destino-select" style="display: block; margin-top: 15px; margin-bottom: 5px; font-weight: 700;">Seleccionar Alumno Destino:</label>
+            <select id="alumno-destino-select" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; background-color: #2A2A2A; color: #FFF;"></select>
+            
+            <button type="button" id="btn-confirmar-transferencia" class="btn-menu" style="width: 100%; padding: 10px; margin-top: 20px; background-color: #FFA500; color: #000; font-weight: bold; border: none;">
+                Confirmar Transferencia
+            </button>
+        </div>
+    </div>
+
+    <div id="personalize-modal" class="modal" style="z-index: 300;">
+        <div class="modal-content" style="max-width: 450px;">
+            <span class="close-button" onclick="document.getElementById('personalize-modal').style.display='none'">&times;</span>
+            <h2>Personalizar Dueño del Boleto</h2>
+            <p id="personalize-info" style="color: #C0C0C0;">Boleto: ...</p>
+            
+            <label for="nuevo-duenio-input" style="display: block; margin-top: 15px; margin-bottom: 5px; font-weight: 700;">Nuevo Nombre del Dueño:</label>
+            <input type="text" id="nuevo-duenio-input" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; background-color: #2A2A2A; color: #FFF;" placeholder="Escribe el nombre del dueño">
+            
+            <button type="button" id="btn-confirmar-personalizacion" class="btn-menu" style="width: 100%; padding: 10px; margin-top: 20px; background-color: #4BACC6; color: #FFF; font-weight: bold; border: none;">
+                Guardar Nombre
+            </button>
+        </div>
+    </div>
+    
     <script src="reporte.js"></script>
 </body>
 </html>

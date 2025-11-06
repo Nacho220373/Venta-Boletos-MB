@@ -96,6 +96,41 @@ ipcMain.handle('guardar-alumnos', async (event, alumnosList) => {
     }
 });
 
+// --- NUEVO HANDLER para REESCRIBIR TODAS LAS VENTAS (Usado para eliminar/transferir) ---
+ipcMain.handle('reescribir-ventas', async (event, ventasList) => {
+    const jsonPath = path.join(__dirname, JSON_VENTAS_FILENAME);
+    
+    try {
+        // Crea el objeto JSON de ventas con la nueva lista filtrada
+        const controlVentas = { ventas: ventasList };
+        
+        // Reescribe todo el archivo ventas_roa.json
+        fs.writeFileSync(jsonPath, JSON.stringify(controlVentas, null, 2), 'utf8');
+        return { success: true };
+
+    } catch (error) {
+        console.error("Error al reescribir las ventas en JSON:", error);
+        return { success: false, message: `Fallo al reescribir ventas: ${error.message}` };
+    }
+});
+
+
+// --- NUEVO HANDLER para GUARDAR ARCHIVO EXCEL (Descarga) ---
+ipcMain.handle('guardar-archivo', async (event, data, filename) => {
+    const downloadPath = app.getPath('downloads');
+    const tempFilePath = path.join(downloadPath, filename); 
+    
+    try {
+        fs.writeFileSync(tempFilePath, data, 'binary'); 
+        
+        return { success: true, path: tempFilePath };
+
+    } catch (error) {
+        console.error("Error al guardar archivo Excel:", error);
+        return { success: false, message: `Fallo al guardar archivo: ${error.message}` };
+    }
+});
+
 
 // --- LÓGICA DE COMUNICACIÓN IPC (LECTURA Y ESCRITURA JSON) ---
 
